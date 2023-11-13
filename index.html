@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No email info page</title>
+</head>
+<body>
+
+    <button onclick="invokeApi()">Continue</button>
+
+    <script>
+        function invokeApi() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const state = urlParams.get('state');
+            const apiEndpoint = 'https://login.yelldev.co.uk/continue';
+            const apiUrl = `${apiEndpoint}?state=${state}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the API response
+                    console.log('API Response:', data);
+                })
+                .catch(error => {
+                    console.error('Error making API request:', error);
+                });
+        }
+    </script>
+
+</body>
+</html>
